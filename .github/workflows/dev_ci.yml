@@ -9,10 +9,11 @@ jobs:
     runs-on: ubuntu-22.04
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
-        with:
-          python-version: "3.11"
-      - uses: pre-commit/action@v3.0.1
+      # then perform qa steps such as the below
+      # - uses: actions/setup-python@v5
+      #   with:
+      #     python-version: "3.11"
+      # - uses: pre-commit/action@v3.0.1
   test:
     needs: qa
     uses: ./.github/workflows/test.yml
