@@ -14,12 +14,12 @@ on:
 
 jobs:
   test:
-    runs-on: ${{ inputs.os || "ubuntu-latest" }}
+    runs-on: ${{ inputs.os == "" && "ubuntu-latest" || inputs.os }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
-          python-version: ${{ inputs.python-version || "3.11"}}
+          python-version: ${{ inputs.python-version == "" && "3.11" || inputs.python-version }}
           cache: "pip"
           cache-dependency-path: |
             dev-requirements.txt
