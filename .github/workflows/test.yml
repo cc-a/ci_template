@@ -14,7 +14,7 @@ on:
 
 jobs:
   test:
-  runs-on: ${{ inputs.os == '' && 'ubuntu-latest' || inputs.os }}
+    runs-on: ${{ inputs.os == '' && 'ubuntu-latest' || inputs.os }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
