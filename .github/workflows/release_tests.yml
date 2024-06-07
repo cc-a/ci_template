@@ -11,8 +11,10 @@ jobs:
       matrix:
         os: ["ubuntu-latest", "windows-latest"]
         python-version: ["3.11"]
+        requirements-file: ["dev-requirements.txt"]
         include:
           - python-version: "3.12"
+          - requirements-file: "old-dev-requirements.txt"
     uses: ./.github/workflows/test.yml
     with:
       os: ${{ matrix.os }}

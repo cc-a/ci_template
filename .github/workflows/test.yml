@@ -9,12 +9,21 @@ on:
       os:
         required: false
         type: "string"
+      requirements-file:
+        required: false
+        type: "string"
 
 jobs:
   test:
     runs-on: ${{ inputs.os == '' && 'ubuntu-latest' || inputs.os }}
+    env:
+      python-version: ${{ inputs.python-version == '' && '3.11' || inputs.python-version }}
+      requirements-file: ${{ inputs.requirements-file == '' && 'dev-requirements.txt' }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
-          python-version: ${{ inputs.python-version == '' && '3.11' || inputs.python-version }}
+          python-version: ${{ env.python-version }}
+          cache: "pip"
+          cache-dependency-path: ${{ env.requirements-file }}
+      - run: pip install -r ${{ env.requirements-file }}
