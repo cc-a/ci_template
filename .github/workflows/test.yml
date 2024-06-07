@@ -17,12 +17,13 @@ jobs:
     runs-on: ${{ inputs.os }}
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
-        with:
-          python-version: ${{ inputs.python-version }}
-          cache: "pip"
-          cache-dependency-path: |
-            dev-requirements.txt
-      - run: pip install -r dev-requirements.txt
-      - run: pytest | true # pytest gives an error code when it can't find tests so add
-                           # true to ignore
+      # do something like the below
+      # - uses: actions/setup-python@v5
+      #   with:
+      #     python-version: ${{ inputs.python-version }}
+      #     cache: "pip"
+      #     cache-dependency-path: |
+      #       dev-requirements.txt
+      # - run: pip install -r dev-requirements.txt
+      # - run: pytest
+
